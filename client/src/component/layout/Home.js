@@ -6,7 +6,7 @@ const Home = () => {
     return (
       <div
         className="view jarallax"
-        style={{backgroundImage: "url('https://masterkn48.apps19.com/images/b2.jpg')",backgroundRepeat:'no-repeat',backgroundSize: 'cover',backgroundPosition: "center center"}}
+        style={{backgroundImage: "url('https://masterkn.tech/images/b2.jpg')",backgroundRepeat:'no-repeat',backgroundSize: 'cover',backgroundPosition: "center center"}}
       >
         <div className="mask d-flex justify-content-center align-items-center">
           <div className="container">
