@@ -4,20 +4,64 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#212121" />
+    <meta name="description" content="URL Shortner" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/css/mdb.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <title>Shortly</title>
+    <link
+      rel="preload stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <link
+      rel="preload stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      href="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/css/bootstrap.min.css"
+    />
+    <link
+      rel="preload stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      href="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/css/sdb.min.css"
+    />
+    <link
+      rel="preload stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <title>Shortly | URL Shortner App</title>
   </head>
-  <body class="heavy-rain-gradient">
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/js/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/js/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/masterkn48/cdn/mbd_pro_4.8.2/js/mdb.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/js/jquery-3.4.1.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/js/bootstrap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/js/popper.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/masterkn48/1saved_css_old_projects/cdn/js/sdb.min.js"
+    ></script>
+    <script>
+      if (window.location.hostname !== "localhost") {
+        console.log(
+          "%c MasterKN!",
+          "font-weight: bold; font-size: 40px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)"
+        );
+        console.log = () => {};
+        console.warn = () => {};
+        console.error = () => {};
+      }
+    </script>
   </body>
 </html>
