@@ -3,7 +3,7 @@ import axios from "axios";
 export const signup = async (data) => {
   try {
     const res = await axios.post("/api/register", data);
-    //console.log(res);
+    console.log(res);
     return res.data;
   } catch (err) {
     console.error(err);

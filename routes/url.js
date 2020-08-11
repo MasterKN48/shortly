@@ -62,7 +62,7 @@ router.delete("/delete/:url_id", async (req, res) => {
 router.post("/shorten", async (req, res) => {
   const { longUrl } = req.body;
   // console.log(req.body);
-  const baseUrl = req.protocol + "://" + req.headers.host;
+  const baseUrl = `${process.env.CLIENT_URL}`;
 
   // Check base url
   if (!validUrl.isUri(baseUrl)) {
@@ -75,25 +75,18 @@ router.post("/shorten", async (req, res) => {
   // Check long url
   if (validUrl.isUri(longUrl)) {
     try {
-      let url = await Url.findOne({ longUrl });
+      const shortUrl = baseUrl + "/" + urlCode;
+      url = new Url({
+        longUrl,
+        shortUrl,
+        urlCode,
+        userId: req.body.id,
+        date: new Date(),
+      });
 
-      if (url) {
-        return res.json(url);
-      } else {
-        const shortUrl = baseUrl + "/" + urlCode;
+      await url.save();
 
-        url = new Url({
-          longUrl,
-          shortUrl,
-          urlCode,
-          userId: req.body.id,
-          date: new Date(),
-        });
-
-        await url.save();
-
-        return res.json(url);
-      }
+      return res.json(url);
     } catch (err) {
       console.error(err);
       return res.status(500).json({ msg: "Server error" });

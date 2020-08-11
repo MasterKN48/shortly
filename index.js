@@ -5,6 +5,7 @@ const session = require("express-session");
 const compression = require("compression");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const path = require("path");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
 const cors = require("cors");
@@ -63,17 +64,25 @@ app.use(passport.session());
 // auth routes
 app.use("/api", authRoutes);
 
+app.get("/manifest.json", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "manifest.json"));
+});
+app.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "favicon.ico"));
+});
+app.get("/favicon.png", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "favicon.png"));
+});
+
 // url Routes
 app.use("/", require("./routes/url"));
 app.use("/api/url", require("./routes/url"));
-
 // serve static asstes if in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
+
+app.use(express.static("client/build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server running on port ${port} 🔥`));

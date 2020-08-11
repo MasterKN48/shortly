@@ -38,7 +38,7 @@ const Navbar = ({ history }) => {
                 exact
                 activeClassName="line"
                 className="nav-link"
-                to="/dashboard"
+                to="/app/dashboard"
               >
                 Dashboard
               </NavLink>
@@ -47,11 +47,11 @@ const Navbar = ({ history }) => {
           {isAuthenticated() === false ? (
             <li className="nav-item ml-2">
               <div className="ui buttons">
-                <NavLink to="/login">
+                <NavLink to="/app/login">
                   <button className="ui button">Login</button>
                 </NavLink>
                 <div className="or" data-text="or"></div>
-                <NavLink to="/register">
+                <NavLink to="/app/register">
                   <button className="ui positive button">Register</button>
                 </NavLink>
               </div>

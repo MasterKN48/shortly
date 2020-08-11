@@ -41,9 +41,9 @@ const Routes = () => (
   >
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/login" exact component={Login} />
-      <Route path="/register" exact component={Register} />
-      <PrivateRoute path="/dashboard" exact component={Dashboard} />
+      <Route path="/app/login" component={Login} />
+      <Route path="/app/register" component={Register} />
+      <PrivateRoute path="/app/dashboard" component={Dashboard} />
       <Route component={NoMatchPage} />
     </Switch>
   </Suspense>

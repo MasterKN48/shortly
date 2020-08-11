@@ -10,6 +10,7 @@ const Register = () => {
     error: "",
     success: false,
   });
+  const [submitting, setSubmitting] = useState(false);
   const { name, email, password, success, error } = values;
 
   const handleChange = (name) => (event) => {
@@ -18,15 +19,17 @@ const Register = () => {
 
   const clickSubmit = (event) => {
     event.preventDefault();
+    setSubmitting(true);
     setValues({ ...values, error: false });
     let data = `name=${name}&email=${email}&password=${password}`;
     signup(data).then((res) => {
-      if (res.response.data.errors) {
+      if (res.response !== undefined && res.response.data.errors) {
         setValues({
           ...values,
           error: res.response.data.errors,
           success: false,
         });
+        setSubmitting(false);
       } else {
         setValues({
           ...values,
@@ -36,6 +39,7 @@ const Register = () => {
           error: "",
           success: true,
         });
+        setSubmitting(false);
       }
     });
   };
@@ -54,7 +58,7 @@ const Register = () => {
       className="alert alert-info"
       style={{ display: success ? "" : "none" }}
     >
-      New account is created. Please <Link to="/login">Signin</Link>
+      New account is created. Please <Link to="/app/login">Signin</Link>
     </div>
   );
   return (
@@ -121,6 +125,7 @@ const Register = () => {
                 </div>
 
                 <button
+                  disabled={submitting}
                   className="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
                   type="submit"
                 >
@@ -128,7 +133,7 @@ const Register = () => {
                 </button>
                 <p>
                   Already Register?
-                  <Link to="/login"> Login</Link>
+                  <Link to="/app/login"> Login</Link>
                 </p>
               </form>
             </div>

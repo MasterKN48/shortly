@@ -21,39 +21,34 @@ const Login = () => {
     event.preventDefault();
     setValues({ ...values, error: false, loading: true });
     let data = `email=${email}&password=${password}`;
-    signin(data)
-      .then((data) => {
-        // console.log(data);
-        if (data.user) {
-          console.log(data);
-          authenticate(data.user, () => {
-            setValues({
-              ...values,
-              error: "",
-              redirectToReferrer: true,
-              loading: false,
-            });
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err.response.data.msg);
-        if (err.response.data) {
+    signin(data).then((data) => {
+      // console.log(data);
+      if (data.msg && data.msg !== "login success") {
+        setValues({
+          ...values,
+          error: data.msg,
+          redirectToReferrer: false,
+          loading: false,
+        });
+      } else if (data.user) {
+        console.log(data);
+        authenticate(data.user, () => {
           setValues({
             ...values,
-            error: err.response.data.msg,
-            redirectToReferrer: false,
+            error: "",
+            redirectToReferrer: true,
             loading: false,
           });
-        } else {
-          setValues({
-            ...values,
-            error: "Something went wrong",
-            redirectToReferrer: false,
-            loading: false,
-          });
-        }
-      });
+        });
+      } else {
+        setValues({
+          ...values,
+          error: "Login failed, User not exists",
+          redirectToReferrer: false,
+          loading: false,
+        });
+      }
+    });
   };
   const showError = () => (
     <div
@@ -74,12 +69,12 @@ const Login = () => {
   const redirectUser = () => {
     if (redirectToReferrer) {
       if (isAuthenticated()) {
-        return <Redirect to="/dashboard" />;
+        return <Redirect to="/app/dashboard" />;
       } else {
-        return <Redirect to="/login" />;
+        return <Redirect to="/app/login" />;
       }
     } else {
-      return <Redirect to="/login" />;
+      return <Redirect to="/app/login" />;
     }
   };
 
@@ -131,7 +126,7 @@ const Login = () => {
                 </button>
                 <p>
                   Not a member?
-                  <Link to="/register"> Register</Link>
+                  <Link to="/app/register"> Register</Link>
                 </p>
               </form>
             </div>

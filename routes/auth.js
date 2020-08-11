@@ -38,7 +38,7 @@ router.post("/register", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: `${process.env.CLIENT_URL}/login`,
+    failureRedirect: `${process.env.CLIENT_URL}/app/login`,
   }),
   (req, res) => {
     req.session.save(() => {
