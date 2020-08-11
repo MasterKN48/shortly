@@ -16,7 +16,7 @@ router.get("/:code", async (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: "Something went wrong" });
+    return res.status(500).json({ msg: "Something went wrong" });
   }
 });
 
@@ -49,12 +49,12 @@ router.delete("/delete/:url_id", async (req, res) => {
   //console.log(url_id);
   Url.findOneAndRemove({ _id: url_id }, (err, data) => {
     if (err) {
-      res.status(400).json({ msg: "Cannot find url" });
+      return res.status(400).json({ msg: "Cannot find url" });
     }
     if (data === null) {
-      res.status(400).json({ msg: "url not exists" });
+      return res.status(400).json({ msg: "url not exists" });
     } else {
-      res.status(200).json({ msg: "delete success", data: data });
+      return res.status(200).json({ msg: "delete success", data: data });
     }
   });
 });
@@ -78,7 +78,7 @@ router.post("/shorten", async (req, res) => {
       let url = await Url.findOne({ longUrl });
 
       if (url) {
-        res.json(url);
+        return res.json(url);
       } else {
         const shortUrl = baseUrl + "/" + urlCode;
 
@@ -92,14 +92,14 @@ router.post("/shorten", async (req, res) => {
 
         await url.save();
 
-        res.json(url);
+        return res.json(url);
       }
     } catch (err) {
       console.error(err);
-      res.status(500).json({ msg: "Server error" });
+      return res.status(500).json({ msg: "Server error" });
     }
   } else {
-    res.status(401).json({ msg: "Invalid url" });
+    return res.status(401).json({ msg: "Invalid url" });
   }
 });
 

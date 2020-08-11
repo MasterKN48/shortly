@@ -1,11 +1,38 @@
-## Shortly 
-### URL Shortner Service
-#### with passportjs strategy
+## 								Shortly : URL Shorter Service
+<img src='./client/public/favicon.ico' style='height:84px;' />
 
-Visit Link(https://u21.herokuapp.com/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://u21.herokuapp.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://u21.herokuapp.com) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![ status](https://img.shields.io/pypi/status/ansicolortags.svg)]() [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/MasterKN48/shortly/releases/)  [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/MasterKN48/shortly) [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/MasterKN48/shortly)
 
+It is a small application for shorten url based provided url, it generate unique short id for each respective long url, once generate short url, that url can be use from anywhere which always redirect to original website for which it shorten. Each User account has separate  dashboard, from where user can short url and do management of all shorted url.
+
+This application use mongodb atlas, passport.js local strategy ,bcyrpt for password hashing. 
+
+#### How to run locally?
+
+```bash
+#clone the project
+1. git clone https://github.com/MasterKN48/shortly
+2. cd shortly
+3. npm i
+4. touch .env
+5. nano .env # any text editor
+`
+CLIENT_URL=<client-app-url>
+MONGO_URI=<mongodb-server-uri>
+COOKIE_KEY=<scret-cookie-key>
+NODE_ENV=dev #either `dev` or `production`
+`
+6. cd client
+7. npm i
+8. cd ..
+9. npm run dev
+```
+
+
+
+[![ForTheBadge built-with-swag](http://ForTheBadge.com/images/badges/built-with-swag.svg)](https://GitHub.com/MASTERKN48/)
 
 ## Available Scripts
 
